@@ -31,7 +31,7 @@ with col1:
     st.write(' ')
 
 with col2:
-    image = Image.open("https://github.com/ludomare/London-Pumpy/blob/main/data_inputs/call_center.jpg")
+    image = Image.open("data_inputs/call_center.jpg")
     st.image(image,use_column_width='auto')
 
 with col3:
