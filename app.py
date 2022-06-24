@@ -398,7 +398,7 @@ if not st.session_state.df1.empty:
       #--------------------------- TRAVAUX REGRESSION ---------------------------#
 
       # Récupérer les paramètres de la régression
-      reg_saved_files = '/streamlit/ml_attendance_time_saved/'
+      reg_saved_files = 'streamlit/ml_attendance_time_saved/'
       num_var = ['Distance', 'TotalOfPumpInLondon_Out', 'temp', 'precip', 'cloudcover', 'visibility', 'congestion_rate']
       reg_scaler = load(reg_saved_files + 'reg_scaler.pkl')
       reg_df_columns = load(reg_saved_files + 'reg_df_columns.pkl')
