@@ -31,7 +31,7 @@ with col1:
     st.write(' ')
 
 with col2:
-    image = Image.open("/content/drive/MyDrive/Projet Pompier/Github/structure_finale/data_inputs/call_center.jpg")
+    image = Image.open("/data_inputs/call_center.jpg")
     st.image(image,use_column_width='auto')
 
 with col3:
@@ -41,7 +41,7 @@ with col3:
 
 
 df = pd.read_pickle(
-    "/content/drive/MyDrive/Projet Pompier/Github/structure_finale/data_outputs/base_ml.pkl"
+    "/data_outputs/base_ml.pkl"
 )
 @st.cache
 def To_num(df):
@@ -306,7 +306,7 @@ if how_many_pumps:
     df_pumps_tail = df_pumps.tail(1)
     st.write(df_pumps_tail)
 
-    model = load('/content/drive/MyDrive/Projet Pompier/Github/structure_finale/data_outputs/ml_nb_pumps/Number_of_Pumps_XGB.joblib')
+    model = load('/data_outputs/ml_nb_pumps/Number_of_Pumps_XGB.joblib')
 
     df_pumps_tail = df_pumps_tail.astype(float)
 
@@ -387,7 +387,7 @@ if not st.session_state.df1.empty:
       df_final=df_temp.tail().iloc[-nb_ligne:,:]
       dtemp=df_temp.tail().iloc[-nb_ligne:,:].reset_index().drop('index',axis=1)
       sgd_optuna = load(
-          "/content/drive/MyDrive/Projet Pompier/Github/structure_finale/data_outputs/ml_target_360/sgd_optuna.joblib"
+          "/data_outputs/ml_target_360/sgd_optuna.joblib"
           )
       y_pred=sgd_optuna.predict_proba(df_final)
       y_pred=pd.DataFrame(y_pred,columns=['% d\'arriver avant 360 secondes ',' % d\'arriver après 360 secondes'])
@@ -398,7 +398,7 @@ if not st.session_state.df1.empty:
       #--------------------------- TRAVAUX REGRESSION ---------------------------#
 
       # Récupérer les paramètres de la régression
-      reg_saved_files = '/content/drive/MyDrive/Projet Pompier/Github/structure_finale/streamlit/ml_attendance_time_saved/'
+      reg_saved_files = '/streamlit/ml_attendance_time_saved/'
       num_var = ['Distance', 'TotalOfPumpInLondon_Out', 'temp', 'precip', 'cloudcover', 'visibility', 'congestion_rate']
       reg_scaler = load(reg_saved_files + 'reg_scaler.pkl')
       reg_df_columns = load(reg_saved_files + 'reg_df_columns.pkl')
@@ -504,7 +504,7 @@ if not st.session_state.df1.empty:
   if st.button('New intervention ?', on_click=reset_button):
     st.session_state.df1=st.session_state.df1.iloc[0:0]
     df = pd.read_pickle(
-        "/content/drive/MyDrive/Projet Pompier/Github/structure_finale/data_outputs/base_ml.pkl"
+        "/data_outputs/base_ml.pkl"
         )
     st.session_state.count = 0
     st.session_state.count2 = 0
