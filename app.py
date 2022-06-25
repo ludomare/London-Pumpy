@@ -173,9 +173,9 @@ month = st.sidebar.selectbox('Month ?', month_list, index = today.month-1)
 
 temp = st.sidebar.number_input('Temperature ?')
 
-precip = st.sidebar.number_input('Precipitation ?',min_value = 0)
+precip = st.sidebar.number_input('Precipitation ?',min_value = 0.00)
 
-cloudcover = st.sidebar.number_input('Cloud cover ?',min_value = 0)
+cloudcover = st.sidebar.number_input('Cloud cover ?',min_value = 0.0)
 
 visibility = st.sidebar.number_input('Visibility ?')
 
@@ -189,7 +189,7 @@ school_holidays = st.sidebar.selectbox(
      'Today is school holiday day ? 0: No, 1:Yes',
      list(df['school_holidays'].unique()[::-1]),index=0)
 
-congestion_rate = st.sidebar.number_input('Congestion rate ?',min_value = 0)
+congestion_rate = st.sidebar.number_input('Congestion rate ?',min_value = 0.00)
 
 
 # pavé pour prédiction nombre de véhicules à envoyer
@@ -398,7 +398,7 @@ if not st.session_state.df1.empty:
       #--------------------------- TRAVAUX REGRESSION ---------------------------#
 
       # Récupérer les paramètres de la régression
-      reg_saved_files = '/streamlit/ml_attendance_time_saved/'
+      reg_saved_files = 'streamlit/ml_attendance_time_saved/'
       num_var = ['Distance', 'TotalOfPumpInLondon_Out', 'temp', 'precip', 'cloudcover', 'visibility', 'congestion_rate']
       reg_scaler = load(reg_saved_files + 'reg_scaler.pkl')
       reg_df_columns = load(reg_saved_files + 'reg_df_columns.pkl')
