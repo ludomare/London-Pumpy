@@ -16,7 +16,6 @@ st.set_page_config(page_title='London Pump.Py',
 
 
 latext = r'''
-
 $$ 
 \huge
 \color{purple}
@@ -306,7 +305,7 @@ if how_many_pumps:
     df_pumps_tail = df_pumps.tail(1)
     st.write(df_pumps_tail)
 
-    model = load('data_outputs/Number_of_Pumps_XGB.joblib')
+    model = load('data_outputs/ml_nb_pumps/Number_of_Pumps_XGB.joblib')
 
     df_pumps_tail = df_pumps_tail.astype(float)
 
