@@ -2,6 +2,7 @@ import streamlit as st
 import time
 import pandas as pd
 from datetime import date
+import xgboost as xgb
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import SGDClassifier
@@ -305,7 +306,8 @@ if how_many_pumps:
     df_pumps_tail = df_pumps.tail(1)
     st.write(df_pumps_tail)
 
-    model = load('data_outputs/ml_nb_pumps/nb_pump.joblib')
+    model = xgb.Booster()
+    model.load_model("/content/drive/MyDrive/Projet Pompier/Github/structure_finale/data_outputs/ml_nb_pumps/Number_of_Pumps_XGB.json")
 
     df_pumps_tail = df_pumps_tail.astype(float)
 
