@@ -5,6 +5,7 @@ from datetime import date
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import SGDClassifier
+from xgboost import XGBClassifier
 from joblib import load
 from PIL import Image
 import streamlit.components.v1 as components
