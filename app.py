@@ -8,6 +8,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import SGDClassifier
 from joblib import load
 from PIL import Image
+import pickle
 import streamlit.components.v1 as components
 pd.set_option("display.max_columns", None)
 
@@ -306,9 +307,8 @@ if how_many_pumps:
     df_pumps_tail = df_pumps.tail(1)
     st.write(df_pumps_tail)
 
-    model = xgb.Booster()
-    model.load_model("/content/drive/MyDrive/Projet Pompier/Github/structure_finale/data_outputs/ml_nb_pumps/Number_of_Pumps_XGB.json")
-
+    
+    model = pickle.load(open('/content/drive/MyDrive/Projet Pompier/Github/structure_finale/data_outputs/ml_nb_pumps/XGB', 'rb'))
     df_pumps_tail = df_pumps_tail.astype(float)
 
     predict_proba = pd.DataFrame(model.predict_proba(df_pumps_tail), columns=('%d pump(s)' % i for i in range(1,6)))
