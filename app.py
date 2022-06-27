@@ -3,6 +3,7 @@ import time
 import pandas as pd
 from datetime import date
 import xgboost as xgb
+from xgboost import XGBClassifier
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import SGDClassifier
