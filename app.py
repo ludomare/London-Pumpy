@@ -309,9 +309,8 @@ if how_many_pumps:
     st.write(df_pumps_tail)
 
     model = XGBClassifier()
-    booster = xgb.Booster()
-    booster.load_model('/content/drive/MyDrive/Projet Pompier/Github/structure_finale/data_outputs/ml_nb_pumps/Number_of_Pumps_XGB.json')
-    model._Booster = booster
+    model.load_model('/content/drive/MyDrive/Projet Pompier/Github/structure_finale/data_outputs/ml_nb_pumps/Number_of_Pumps_XGB.json')
+    
     
     predict_proba = pd.DataFrame(model.predict_proba(df_pumps_tail), columns=('%d pump(s)' % i for i in range(1,6)))
     st.table(predict_proba)
