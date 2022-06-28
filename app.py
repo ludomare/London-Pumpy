@@ -10,6 +10,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import SGDClassifier
 from joblib import load
 from PIL import Image
+from sklearn.externals import joblib
 import pickle
 import streamlit.components.v1 as components
 pd.set_option("display.max_columns", None)
@@ -310,7 +311,7 @@ if how_many_pumps:
     st.write(df_pumps_tail)
 
     model = KNeighborsClassifier()
-    model.load_model('data_outputs/ml_nb_pumps/Number_of_Pumps_KNN.joblib')
+    model= joblib.load("data_outputs/ml_nb_pumps/Number_of_Pumps_KNN.joblib")
     
     
     predict_proba = pd.DataFrame(model.predict_proba(df_pumps_tail), columns=('%d pump(s)' % i for i in range(1,6)))
