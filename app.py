@@ -8,7 +8,7 @@ from sklearn.neighbors import KNeighborsClassifier
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import SGDClassifier
-from joblib import load
+from joblib import dump, load
 from PIL import Image
 import pickle
 import streamlit.components.v1 as components
@@ -310,7 +310,7 @@ if how_many_pumps:
     st.write(df_pumps_tail)
 
     model = KNeighborsClassifier()
-    model= joblib.load("data_outputs/ml_nb_pumps/Number_of_Pumps_KNN.joblib")
+    model= load("data_outputs/ml_nb_pumps/Number_of_Pumps_KNN.joblib")
     
     
     predict_proba = pd.DataFrame(model.predict_proba(df_pumps_tail), columns=('%d pump(s)' % i for i in range(1,6)))
