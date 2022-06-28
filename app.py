@@ -309,7 +309,7 @@ if how_many_pumps:
     df_pumps_tail = df_pumps.tail(1)
     st.write(df_pumps_tail)
 
-    #model = KNeighborsClassifier()
+    model = KNeighborsClassifier()
     model= load("data_outputs/ml_nb_pumps/Number_of_Pumps_KNN.joblib")
     
     
