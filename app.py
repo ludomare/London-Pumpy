@@ -10,7 +10,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import SGDClassifier
 from joblib import load
 from PIL import Image
-from sklearn.externals import joblib
 import pickle
 import streamlit.components.v1 as components
 pd.set_option("display.max_columns", None)
